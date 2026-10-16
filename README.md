@@ -1,8 +1,8 @@
 # OneRobotics A1 for Genesis World
 
-Standalone OneRobotics A1 integration for [Genesis World](https://github.com/Genesis-Embodied-AI/genesis-world), following an external-project layout similar to [onerobotics-a1-mjlab](https://github.com/T1Amoo/onerobotics-a1-mjlab).
+OneRobotics A1 robot integration for [Genesis World](https://github.com/Genesis-Embodied-AI/genesis-world), providing URDF robot models, simulation examples, joint control, and inverse kinematics.
 
-This project is independently maintained; it is **not** part of the Genesis curated asset library and is not endorsed by the Genesis maintainers.
+The project supports three robot configurations: a 7-DoF right arm, a 7-DoF left arm, and a 14-DoF bimanual system with a fixed stand.
 
 ## Supported models
 
@@ -81,16 +81,13 @@ scene.build()
 
 ## Validation and limitations
 
-See [VALIDATION.md](VALIDATION.md) for the existing fork's reported Genesis version, model-loading results, joint-control observations, and IK results. The independent-package relocation should be rechecked locally before publishing a compatibility claim for the packaged distribution.
+See [VALIDATION.md](VALIDATION.md) for recorded local Genesis validation results, including URDF loading, joint control,and inverse kinematics.The standalone Python package should be validated after installation before claiming compatibility for the packaged distribution. The independent-package relocation should be rechecked locally before publishing a compatibility claim for the packaged distribution.
 
 The independent arms retain upstream temporary Link7 inertial values; the bimanual URDF retains zero effort/velocity placeholders. The demonstration overrides runtime motor force limits for control only. These demonstrations are not proof of hardware fidelity or a production-ready controller.
 
-## Licensing and provenance
+## Licensing
 
-The example code is distributed under the root [Apache-2.0 LICENSE](LICENSE). The OneRobotics URDF/STL assets are licensed separately under **CC BY 4.0**; see [ASSET_LICENSE.md](ASSET_LICENSE.md) and [ATTRIBUTION.md](src/onerobotics_a1_genesis/assets/onerobotics_a1/ATTRIBUTION.md).
+The Python integration and example code are licensed under [Apache License 2.0](LICENSE).
+The OneRobotics A1 URDF models and STL meshes are licensed separately under **Creative Commons Attribution 4.0 International(CC BY 4.0)**.See [ASSET_LICENSE.md](ASSET_LICENSE.md) and[ATTRIBUTION.md](src/onerobotics_a1_genesis/assets/onerobotics_a1/ATTRIBUTION.md)for asset licensing and attribution details.
 
-Upstream asset source: https://github.com/katazen/onerobot_h1
-
-Pinned source revision: `3db6f614c8443bd9396fcd9304cf64a519f98f2a`
-
-Earlier Genesis upstream asset submission (declined due to the repository asset-library policy): [Issue #3523](https://github.com/Genesis-Embodied-AI/genesis-world/issues/3523) / [PR #3525](https://github.com/Genesis-Embodied-AI/genesis-world/pull/3525).
+Original asset repository: https://github.com/katazen/onerobot_h1

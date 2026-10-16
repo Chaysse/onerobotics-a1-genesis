@@ -407,7 +407,8 @@ def main() -> int:
     try:
         import genesis as gs
     except ImportError as exc:
-        print("Genesis is unavailable. Install the checkout with `python -m pip install -e .`.",
+        print("Genesis World is unavailable. Install a compatible PyTorch "
+        "build and `genesis-world` in the active Python environment.",
               file=sys.stderr)
         raise SystemExit(2) from exc
 

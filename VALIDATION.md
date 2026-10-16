@@ -1,6 +1,10 @@
-# Genesis validation status
+# Genesis Validation
 
-This document summarizes **previously reported local execution results** from the public Genesis fork. It is not a claim that a newly packaged independent repository has already been installed and validated.
+This document records local validation results for the OneRobotics A1 robot models using Genesis World.
+
+The results were obtained with Genesis World 1.4.4 on the CPU backend using float32 precision.
+
+Standalone Python package installation and distribution validation should be recorded separately.
 
 ## Environment (reported October 15, 2026)
 
@@ -16,7 +20,7 @@ This document summarizes **previously reported local execution results** from th
 | A1 left arm (7 DoF) | Passed | Executed | Passed |
 | A1 bimanual stand (14 DoF) | Passed | Executed | Passed |
 
-Right-arm details reported in the previous integration guide:
+Recorded right-arm validation results:
 
 - Seven-joint position control endpoint RMSE: approximately **0.0144 rad**; J2 offset approximately **0.038 rad**.
 - Joint velocity sample: **0.0991 rad/s** against **0.1 rad/s** target.
