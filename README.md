@@ -16,7 +16,7 @@ All three models, 33 referenced STL files, and their attribution notice are bund
 
 ## Installation
 
-Requires Python 3.10–3.13. Install a compatible version of [PyTorch](https://pytorch.org/get-started/locally/) for your system before installing Genesis and this integration. The following works in a Conda environment; `uv` is not required.
+Requires Python 3.10–3.13. Install a compatible version of [PyTorch](https://pytorch.org/get-started/locally/) for your system before installing Genesis and this integration. The following works in a Conda environment; 
 
 ```bash
 git clone https://github.com/Chaysse/onerobotics-a1-genesis.git
@@ -65,19 +65,57 @@ Without `-v`, the simulation runs without the graphical viewer. See `a1-genesis-
 
 ## Use the model in your own Genesis code
 
+The integration supports both CPU and GPU backends in Genesis World.
+
+### GPU example
+
 ```python
 import genesis as gs
 from onerobotics_a1_genesis import urdf_path
 
-gs.init(backend=gs.cpu)
+gs.init(backend=gs.gpu, precision="32")
+
 scene = gs.Scene(show_viewer=False)
+
 robot = scene.add_entity(
-    gs.morphs.URDF(file=str(urdf_path("right")), fixed=True),
+    gs.morphs.URDF(
+        file=str(urdf_path("right")),
+        fixed=True,
+    )
 )
+
 scene.build()
+
+for _ in range(1000):
+    scene.step()
 ```
 
-`urdf_path` also accepts `"left"` and `"bimanual"`. This interface returns a filesystem path to packaged data without modifying Genesis.
+### CPU backend
+
+To run on CPU, replace:
+
+```python
+gs.init(backend=gs.gpu, precision="32")
+```
+
+with:
+
+```python
+gs.init(backend=gs.cpu, precision="32")
+```
+
+### Available robot models
+
+- `urdf_path("right")`: A1 right arm (7 DoF)
+- `urdf_path("left")`: A1 left arm (7 DoF)
+- `urdf_path("bimanual")`: A1 bimanual stand (14 DoF)
+
+The `urdf_path()` function returns the filesystem path
+to the packaged URDF model without modifying Genesis.
+
+GPU execution requires a compatible GPU, drivers, and
+Genesis runtime dependencies.
+```
 
 ## Validation and limitations
 
