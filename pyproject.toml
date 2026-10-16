@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "onerobotics-a1-genesis"
+version = "0.1.0"
+description = "Standalone OneRobotics A1 robot integration for Genesis World"
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{name = "OneRobotics"}]
+keywords = ["onerobotics", "a1", "genesis-world", "urdf", "robotics", "manipulation"]
+dependencies = [
+  "genesis-world>=1.4.4,<2.0.0",
+  "numpy",
+  "trimesh",
+]
+
+[project.urls]
+Repository = "https://github.com/Chaysse/onerobotics-a1-genesis"
+"Original assets" = "https://github.com/katazen/onerobot_h1"
+"Genesis World" = "https://github.com/Genesis-Embodied-AI/genesis-world"
+
+[project.scripts]
+a1-genesis-demo = "onerobotics_a1_genesis.demo:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["onerobotics_a1_genesis*"]
+
+[tool.setuptools.package-data]
+onerobotics_a1_genesis = [
+  "assets/onerobotics_a1/*.urdf",
+  "assets/onerobotics_a1/*.md",
+  "assets/onerobotics_a1/meshes/a1_r/*.STL",
+  "assets/onerobotics_a1/meshes/a1_l/*.STL",
+  "assets/onerobotics_a1/bimanual_stand/*.urdf",
+  "assets/onerobotics_a1/bimanual_stand/meshes/*.STL",
+]
